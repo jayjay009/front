@@ -9,16 +9,25 @@ import Spinner from "@/components/Spinner";
 import ProductsGrid from "@/components/ProductGrid";
 
 const SearchInput = styled(Input)`
+  border-style: 5px solid white;
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size:1.4rem;
+  color: #fff;
 `;
 const InputWrapper = styled.div`
   position:sticky;
   top:68px;
   margin: 25px 0;
   padding: 5px 0;
-  background-color: #eeeeeeaa;
+  border-style: 5px solid white;
+  color: #fff;
+`;
+const Bg = styled.div`
+  background-color: #714423;
+  color: #fff;
+  height: 100%;
+  padding-bottom: 100%;
 `;
 
 export default function SearchPage() {
@@ -45,7 +54,7 @@ export default function SearchPage() {
       });
   }
   return (
-    <>
+    <Bg>
       <Header />
       <Center>
         <InputWrapper>
@@ -66,6 +75,6 @@ export default function SearchPage() {
              products={products} />
         )}
       </Center>
-    </>
+    </Bg>
   );
 }

@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import Title from "@/components/Title";
 import Center from "@/components/Center";
 import { Category } from "@/models/Category";
 import { Product } from "@/models/Product";
@@ -20,20 +19,32 @@ const CategoryHeader = styled.div`
 const FiltersWrapper = styled.div`
   display: flex;
   gap: 15px;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 const Filter = styled.div`
-  background-color: #ddd;
+  background-color: #97704f;
   padding: 5px 10px;
   border-radius: 5px;
   display: flex;
   gap: 5px;
-  color: #444;
+  color: #fff;
+  margin-bottom: 5px;
   select {
-    background-color: transparent;
+    background-color: #714423;
     border: 0;
     font-size: inherit;
-    color: #444;
+    color: #fff;
+    display: flex;
+    
   }
+`;
+const Bg = styled.div`
+  background-color: #714423;
+  color: #fff;
+  height: 100%;
+  padding-bottom: 30%;
 `;
 
 export default function CategoryPage({
@@ -82,7 +93,7 @@ export default function CategoryPage({
     });
   }, [filtersValues, sort, filtersChanged]);
   return (
-    <>
+    <Bg>
       <Header />
       <Center>
         <CategoryHeader>
@@ -131,7 +142,7 @@ export default function CategoryPage({
           </div>
         )}
       </Center>
-    </>
+    </Bg>
   );
 }
 

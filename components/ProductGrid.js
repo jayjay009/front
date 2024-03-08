@@ -3,6 +3,7 @@ import ProductBox from "@/components/ProductBox";
 import { RevealWrapper } from "next-reveal";
 
 const StyledProductsGrid = styled.div`
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;

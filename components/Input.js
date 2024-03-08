@@ -7,6 +7,13 @@ const StyledInput = styled.input`
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+  background-color:  transparent;
+  font-weight: bold;
+  color: white; 
+  &::placeholder {
+    color: #fff; 
+    opacity: 0.7;
+  }
 `;
 
 export default function Input(props) {

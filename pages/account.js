@@ -13,7 +13,17 @@ import ProductBox from "@/components/ProductBox";
 import Tabs from "@/components/Tabs";
 import SingleOrder from "@/components/SingleOrder";
 
+const Bg = styled.div`
+  background-color: #714423;
+  color:#fff;
+  height: 100%;
+  padding-bottom: 100%;
 
+`;
+const InsideBox = styled.div`
+  background-color: #97704f;
+  border-radius: 10px;
+`;
 const ColsWrapper = styled.div`
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -31,6 +41,33 @@ const WishedProductsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 20px; 
+  }
+`;
+const Box = styled.div`
+  background-color: transparent;
+  border-radius: 10px;
+  padding: 30px;
+
+  @media only screen and (max-width: 768px) {
+    padding: 15px;
+  }
+  
+`;
+const ButColor = styled.div`
+background-color: #714423;
+border: 0;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
 `;
 
 export default function AccountPage() {
@@ -55,7 +92,7 @@ export default function AccountPage() {
   async function login() {
     await signIn("google");
   }
-  function saveAddress() {
+  async function saveAddress() {
     const data = { name, email, city, streetAddress, postalCode, country };
     axios.put("/api/address", data);
   }
@@ -63,17 +100,22 @@ export default function AccountPage() {
     if (!session) {
       return;
     }
-    setAddressLoaded(false);
-    setWishListLoaded(false);
-    setOrderLoaded(false);
     axios.get("/api/address").then((response) => {
-      setName(response.data.name);
-      setEmail(response.data.email);
-      setCity(response.data.city);
-      setPostalCode(response.data.postalCode);
-      setStreetAddress(response.data.streetAddress);
-      setCountry(response.data.country);
-      setAddressLoaded(true);
+      if(response.data) {
+          setName(response.data.name || "");
+      setEmail(response.data.email || "");
+      setCity(response.data.city || "");
+      setPostalCode(response.data.postalCode || "");
+      setStreetAddress(response.data.streetAddress || "");
+      setCountry(response.data.country || "");
+      }
+      else {
+        // Handle the case where response.data is null or undefined
+        console.error("Error: response.data is null or undefined");
+      }
+    }).catch((error) => {
+      // Handle the error from the API request
+      console.error("Error fetching data from /api/address:", error);
     });
     axios.get("/api/wishList").then((response) => {
       setWishedProducts(response.data.map((wp) => wp.product));
@@ -90,13 +132,14 @@ export default function AccountPage() {
     });
   }
   return (
-    <>
+    <Bg>
       <Header />
       <Center>
         <ColsWrapper>
           <div>
             <RevealWrapper delay={0}>
-              <WhiteBox>
+              <InsideBox>
+              <Box>
                 <Tabs
                   tabs={["Orders", "Wishlist"]}
                   active={activeTab}
@@ -116,7 +159,9 @@ export default function AccountPage() {
                         <SingleOrder {...o}/>
                       ))}
                     </div>
+                  
                   )}
+                  
                   </>
                 )}
                 {activeTab === "Wishlist" && (
@@ -149,12 +194,14 @@ export default function AccountPage() {
                     )}
                   </>
                 )}
-              </WhiteBox>
+              </Box> 
+               </InsideBox>
             </RevealWrapper>
           </div>
           <div>
             <RevealWrapper delay={100}>
-              <WhiteBox>
+              <InsideBox>
+              <Box>
                 <h2>{session ? "Account Details" : "LogIn"}</h2>
                 {!adressloaded && <Spinner fullWidth={true} />}
                 {adressloaded && session && (
@@ -211,20 +258,21 @@ export default function AccountPage() {
                   </>
                 )}
                 {session && (
-                  <Button primary onClick={logout}>
+                  <ButColor primary onClick={logout}>
                     Logout
-                  </Button>
+                  </ButColor>
                 )}
                 {!session && (
-                  <Button primary onClick={login}>
+                  <ButColor primary onClick={login}>
                     Login with Google
-                  </Button>
+                  </ButColor>
                 )}
-              </WhiteBox>
+              </Box>
+              </InsideBox>
             </RevealWrapper>
           </div>
         </ColsWrapper>
       </Center>
-    </>
+    </Bg>
   );
 }

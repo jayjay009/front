@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 export default function Spinner({ fullWidth }) {
   return (
     <Wrapper fullWidth={fullWidth}>
-      <ClockLoader speedMultiplier={3} color={"#555"} size={200} />;
+      <ClockLoader speedMultiplier={3} color={"#fff"} size={200} />;
     </Wrapper>
   );
 }

@@ -1,11 +1,9 @@
-import { Product } from "./Product";
+import {model, models, Schema} from "mongoose";
+import {Product} from "@/models/Product";
 
-const { Schema, models, model } = require("mongoose");
-
-const WishedProductShcema = new Schema({
-  userEmail: { type: String, required: true },
-  product: { type: Schema.Types.ObjectId, ref: Product},
+const WishedProductSchema = new Schema({
+  userEmail: {type: String, required: true},
+  product: {type: Schema.Types.ObjectId, ref: Product},
 });
 
-export const WishedProduct =
-  models?.WishedProduct || model("WishedProduct", WishedProductShcema);
+export const WishedProduct = models?.WishedProduct || model('WishedProduct', WishedProductSchema);

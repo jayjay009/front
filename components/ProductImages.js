@@ -15,11 +15,11 @@ const ImageButtons = styled.div`
   margin-top: 10px;
 `;
 const ImageButton = styled.div`
-  border: 2px solid #aaa;
+  border: 2px solid #fff;
   ${(props) =>
     props.active
       ? `
-  border-color: #ccc;
+  border-color: #fff; 
 `
       : `
   border-color: transparent;
@@ -32,6 +32,7 @@ const ImageButton = styled.div`
 const BigImageWrpper = styled.div`
   text-align: center;
 `;
+
 export default function ProductImages({ images }) {
   const [activeImage, setActiveImage] = useState(images?.[0]);
   return (

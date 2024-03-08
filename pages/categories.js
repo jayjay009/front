@@ -11,6 +11,14 @@ import { authOption } from "./api/auth/[...nextauth]";
 import { WishedProduct } from "@/models/WishedProducts";
 import { mongooseConnect } from "@/lib/mongoose";
 
+const Bg = styled.div`
+  background-color: #714423;
+  color:#fff;
+  height: 100%;
+  padding-bottom: 14%;
+
+`;
+
 const CategoryGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -20,6 +28,7 @@ const CategoryGrid = styled.div`
   }
 `;
 const CategoryTitle = styled.div`
+ background-color: #714423;
   display: flex;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -30,7 +39,7 @@ const CategoryTitle = styled.div`
     margin-top: 10px;
   }
   a {
-    color: #555;
+    color: #fff;
     display: inline-block;
   }
 `;
@@ -38,19 +47,19 @@ const CategoryWrapper = styled.div`
   margin-bottom: 40px;
 `;
 const ShowAllSquare = styled(Link)`
-  background-color: #ddd;
+  background-color: #97704F;
   height: 160px;
   border-radius: 10px;
   align-items: center;
   display: flex;
   justify-content: center;
-  color: #555;
+  color: #fff;
   text-decoration: none;
 `;
 
 export default function CategoriesPage({ mainCategories, categoriesProduct, wishedProducts=[] }) {
   return (
-    <>
+    <Bg>
       <Header />
       <Center>
         {mainCategories.map((cat) => (
@@ -76,7 +85,7 @@ export default function CategoriesPage({ mainCategories, categoriesProduct, wish
           </CategoryWrapper>
         ))}
       </Center>
-    </>
+    </Bg>
   );
 }
 

@@ -13,7 +13,7 @@ body{
 hr{
     display: block;
     border:0;
-    border-top:1px solid #ccc;
+    border-top: 2px solid #fff;
   }
 `;
 

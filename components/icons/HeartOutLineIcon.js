@@ -5,7 +5,7 @@ export default function HeartOutLineIcon({className = "w-6 h-6"}) {
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
-      stroke="currentColor"
+      stroke="white"
       className={className}
     >
       <path

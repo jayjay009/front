@@ -6,7 +6,7 @@ import FlyingButton from "@/components/FlyingButton";
 import {RevealWrapper} from 'next-reveal'
 
 const Bg = styled.div`
-  background-color: #222;
+  background-color: #97704F;
   color:#fff;
   padding: 50px 0;
 `;
@@ -19,7 +19,7 @@ const Title = styled.h1`
   }
 `;
 const Desc = styled.p`
-  color:#aaa;
+  color:#fff;
   font-size:.8rem;
 `;
 const ColumnsWrapper = styled.div`
@@ -78,26 +78,24 @@ export default function Featured({product}) {
       <Center>
         <ColumnsWrapper>
           <Column>
-            <div>
               <RevealWrapper origin={'left'} delay={0}>
                 <ContentWrapper>
                   <Title>{product.title}</Title>
                   <Desc>{product.description}</Desc>
                   <ButtonsWrapper>
-                    <ButtonLink href={'/product/'+product._id} outline={1} white={1}>Read more</ButtonLink>
-                    <FlyingButton white={1} _id={product._id} src={product.images?.[0]}>
+                    <ButtonLink href={'/product/'+product._id}  black >Read more</ButtonLink>
+                    <FlyingButton white={1}  _id={product._id} src={product.images?.[0]}>
                       <CartIcon />
                       Add to cart
                     </FlyingButton>
                   </ButtonsWrapper>
                 </ContentWrapper>
               </RevealWrapper>
-            </div>
           </Column>
           <ImgColumn>
             <RevealWrapper delay={0}>
               <CenterImg>
-                <img className={'main'} src={product.images?.[0]} alt=""/>
+                <img className={'main'} src="https://mini-thesis-ecommerce.s3.amazonaws.com/1709108090528.png" alt=""/>
               </CenterImg>
             </RevealWrapper>
           </ImgColumn>

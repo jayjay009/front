@@ -4,14 +4,14 @@ import Center from "@/components/Center";
 import { useContext, useState } from "react";
 import { CartContext } from "./CartContext";
 import BarsIcon from "./icons/Bars";
-import Spinner from "./Spinner";
 import SearchIcon from "./icons/SearchIcon";
 
 const StyledHeader = styled.header`
-  background-color: #222;
+  background-color: #97704F;
   position: sticky;
   top: 0;
   z-index: 10;
+  padding-top: 1px;
 `;
 const Logo = styled(Link)`
   color: #fff;
@@ -23,6 +23,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 20px 0;
+  
 `;
 const StyledNav = styled.nav`
   ${(props) =>
@@ -40,7 +41,7 @@ const StyledNav = styled.nav`
   left: 0;
   right: 0;
   padding: 70px 20px 20px;
-  background-color: #222;
+  background-color: #97704F;
   @media screen and (min-width: 768px) {
     display: flex;
     position: static;
@@ -48,8 +49,9 @@ const StyledNav = styled.nav`
   }
 `;
 const NavLink = styled(Link)`
+background-color: #97704F;
   display: block;
-  color: #aaa;
+  color: #fff;
   text-decoration: none;
   min-width: 30px;
   padding: 10px 0;
@@ -61,7 +63,7 @@ const NavLink = styled(Link)`
   }
 `;
 const NavButton = styled.button`
-  background-color: transparent;
+ background-color: #97704F;
   width: 30px;
   height: 30px;
   border: 0;
@@ -94,7 +96,7 @@ export default function Header() {
     <StyledHeader>
       <Center>
         <Wrapper>
-          <Logo href={"/"}>SAINT'S CAFFE</Logo>
+          <Logo href={"/"}>SAINT’S CAFÉ</Logo>
           <StyledNav mobileNavActive={mobileNavActive}>
             <NavLink href={"/"}>Home</NavLink>
             <NavLink href={"/products"}>All Products</NavLink>

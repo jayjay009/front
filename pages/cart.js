@@ -11,6 +11,7 @@ import { RevealWrapper } from "next-reveal";
 import { useSession } from "next-auth/react";
 
 const ColumnsWrapper = styled.div`
+
   display: grid;
   grid-template-columns: 1fr;
   @media screen and (min-width: 768px) {
@@ -32,11 +33,11 @@ const ColumnsWrapper = styled.div`
   }
   tr.total td {
     font-weight: bold;
+    
   }
 `;
 
 const Box = styled.div`
-  background-color: #fff;
   border-radius: 10px;
   padding: 30px;
 `;
@@ -52,7 +53,7 @@ const ProductImageBox = styled.div`
   width: 70px;
   height: 100px;
   padding: 2px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,6 +86,21 @@ const CityHolder = styled.div`
   display: flex;
   gap: 5px;
 `;
+const Bg = styled.div`
+  background-color: #714423;
+  color:#fff;
+  height: 100%;
+  padding-bottom: 26%;
+
+`;
+const InsideBox = styled.div`
+  background-color: #97704f;
+  border-radius: 10px;
+`;
+const WhiteTableCell = styled.td`
+  color: white;
+  border: 2px solid;
+`;
 
 export default function CartPage() {
   const { cartProducts, addProduct, removeProduct, clearCart } =
@@ -98,7 +114,6 @@ export default function CartPage() {
   const [streetAddress, setStreetAddress] = useState("");
   const [country, setCountry] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  const [shippingFee, setShippingFee] = useState(null);
   useEffect(() => {
     if (cartProducts.length > 0) {
       axios.post("/api/cart", { ids: cartProducts }).then((response) => {
@@ -116,9 +131,6 @@ export default function CartPage() {
       setIsSuccess(true);
       clearCart();
     }
-    axios.get("/api/settings?name=shippingFee").then((res) => {
-      setShippingFee(res.data.value);
-    });
   }, []);
   useEffect(() => {
     if (!session) {
@@ -161,25 +173,28 @@ export default function CartPage() {
 
   if (isSuccess) {
     return (
-      <>
+      <Bg>
         <Header />
         <Center>
           <ColumnsWrapper>
+          <InsideBox>
             <Box>
               <h1>Thanks for your order!</h1>
               <p>We will email you when your order will be sent.</p>
             </Box>
+            </InsideBox>
           </ColumnsWrapper>
         </Center>
-      </>
+      </Bg>
     );
   }
   return (
-    <>
+    <Bg>
       <Header />
       <Center>
         <ColumnsWrapper>
           <RevealWrapper delay={0}>
+            <InsideBox>
             <Box>
               <h2>Cart</h2>
               {!cartProducts?.length && <div>Your cart is empty</div>}
@@ -202,7 +217,7 @@ export default function CartPage() {
                           {product.title}
                         </ProductInfoCell>
                         <td>
-                          <Button
+                          <Button black 
                             onClick={() => lessOfThisProduct(product._id)}
                           >
                             -
@@ -213,7 +228,7 @@ export default function CartPage() {
                                 .length
                             }
                           </QuantityLabel>
-                          <Button
+                          <Button black
                             onClick={() => moreOfThisProduct(product._id)}
                           >
                             +
@@ -230,21 +245,19 @@ export default function CartPage() {
                       <td colSpan={2}>Products</td>
                       <td>₱{productsTotal}</td>
                     </tr>
-                    <tr className="subtotal">
-                      <td colSpan={2}>Shipping</td>
-                      <td>₱{shippingFee}</td>
-                    </tr>
                     <tr className="subtotal total">
                       <td colSpan={2}>Total</td>
-                      <td>₱{productsTotal + parseInt(shippingFee || 0)}</td>
+                      <td>₱{productsTotal|| 0}</td>
                     </tr>
                   </tbody>
                 </Table>
               )}
             </Box>
+            </InsideBox>
           </RevealWrapper>
           {!!cartProducts?.length && (
             <RevealWrapper delay={100}>
+              <InsideBox>
               <Box>
                 <h2>Order information</h2>
                 <Input
@@ -278,6 +291,7 @@ export default function CartPage() {
                   />
                 </CityHolder>
                 <Input
+                  fill="white"
                   type="text"
                   placeholder="Room"
                   value={streetAddress}
@@ -295,10 +309,11 @@ export default function CartPage() {
                   Continue to payment
                 </Button>
               </Box>
+              </InsideBox>
             </RevealWrapper>
           )}
         </ColumnsWrapper>
       </Center>
-    </>
+    </Bg>
   );
 }

@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+const Time = styled.div`
+color: #fff;
+`
+
 const StyledOrder = styled.div`
   margin: 10px 0;
   padding: 10px 0;
@@ -9,7 +13,7 @@ const StyledOrder = styled.div`
   align-items: center;
   time {
     font-size: 1rem;
-    color: #555;
+    color: #fff;
   }
 `;
 const ProductRow = styled.div`
@@ -21,7 +25,7 @@ const Address = styled.div`
 font-size: .8rem;
 line-height: 1rem;
 margin-top: 10px;
-color: #888;
+mix-blend-mode: soft-light;
 `;
 
 export default function SingleOrder({ line_items, createdAt,...rest }) {

@@ -7,16 +7,25 @@ import { Product } from "@/models/Product";
 import { authOption } from "./api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import { WishedProduct } from "@/models/WishedProducts";
+import styled from "styled-components";
+
+
+const Bg = styled.div`
+  background-color: #714423;
+  color:#fff;
+  height: 100%;
+  padding-bottom: 30%;
+`;
 
 export default function ProductPage({ products, wishedProducts }) {
   return (
-    <>
+     <Bg>
       <Header />
       <Center>
         <Title>All Products</Title>
         <ProductsGrid products={products} wishedProducts={wishedProducts} />
       </Center>
-    </>
+      </Bg>
   );
 }
 

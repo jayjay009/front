@@ -6,7 +6,7 @@ import FlyingButton from "./FlyingButton";
 import HeartOutLineIcon from "./icons/HeartOutLineIcon";
 import Button from "./Button";
 import HeartSolidIcon from "./icons/HeartSolidIcon";
-import axios  from "axios";
+import axios from "axios";
 
 const ProductWrapper = styled.div`
   button {
@@ -17,7 +17,9 @@ const ProductWrapper = styled.div`
 `;
 
 const WhiteBox = styled(Link)`
-  background-color: #fff;
+  border-style: solid;
+  border-color: white;
+  background-color: transparent;
   padding: 20px;
   height: 100px;
   text-align: center;
@@ -83,14 +85,18 @@ const WishListButton = styled.button`
     width: 16px;
   }
 `;
+const Text = styled.div`
+  color: #fff;
+`;
+
 export default function ProductBox({
   _id,
   title,
   description,
   price,
   images,
-  wished=false,
-  onRemoveFromWishlist=()=>{},
+  wished = false,
+  onRemoveFromWishlist = () => {},
 }) {
   const { addProduct } = useContext(CartContext);
   const url = "/product/" + _id;
@@ -99,12 +105,14 @@ export default function ProductBox({
     ev.preventDefault();
     ev.stopPropagation();
     const nextValue = !isWished;
-    if(nextValue === false && onRemoveFromWishlist) {
+    if (nextValue === false && onRemoveFromWishlist) {
       onRemoveFromWishlist(_id);
     }
-    axios.post('/api/wishList', {
-      product: _id,
-    }).then(() => {});
+    axios
+      .post("/api/wishList", {
+        product: _id,
+      })
+      .then(() => {});
     setIsWished(nextValue);
   }
   return (
@@ -122,7 +130,7 @@ export default function ProductBox({
         <PriceRow>
           <Price>₱{price}</Price>
           <FlyingButton _id={_id} src={images?.[0]}>
-            Add To Cart
+            <Text>Add To Cart</Text>
           </FlyingButton>
         </PriceRow>
       </ProductInfoBox>

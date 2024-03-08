@@ -10,7 +10,8 @@ const StyleTable = styled.table`
     font-size: 0.7rem;
   }
   td {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 2px solid ;
+    color: white;
   }
 `;
 

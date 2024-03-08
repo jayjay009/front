@@ -41,7 +41,7 @@ export const ButtonStyle = css`
     props.black &&
     !props.outline &&
     css`
-      background-color: #000;
+      background-color: #714423;
       color: #fff;
     `}
   ${(props) =>
