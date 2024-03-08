@@ -41,7 +41,7 @@ const WishedProductsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 600px) {
     grid-template-columns: 1fr;
     gap: 20px; 
   }

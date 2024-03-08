@@ -62,7 +62,7 @@ const ProductImageBox = styled.div`
     max-width: 60px;
     max-height: 60px;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 600px) {
     padding: 10px;
     width: 100px;
     height: 100px;
@@ -76,7 +76,7 @@ const ProductImageBox = styled.div`
 const QuantityLabel = styled.span`
   padding: 0 15px;
   display: block;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 600px) {
     display: inline-block;
     padding: 0 6px;
   }
