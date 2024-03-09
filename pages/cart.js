@@ -14,7 +14,7 @@ const ColumnsWrapper = styled.div`
 
   display: grid;
   grid-template-columns: 1fr;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 600px) {
     grid-template-columns: 1.2fr 0.8fr;
   }
   gap: 40px;

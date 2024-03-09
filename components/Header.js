@@ -42,7 +42,7 @@ const StyledNav = styled.nav`
   right: 0;
   padding: 70px 20px 20px;
   background-color: #97704F;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 600px) {
     display: flex;
     position: static;
     padding: 0;
@@ -58,7 +58,7 @@ background-color: #97704F;
   svg {
     height: 20px;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 600px) {
     padding: 0;
   }
 `;
@@ -71,7 +71,7 @@ const NavButton = styled.button`
   cursor: pointer;
   position: relative;
   z-index: 3;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 600px) {
     display: none;
   }
 `;

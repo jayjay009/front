@@ -14,7 +14,7 @@ const Title = styled.h1`
   margin:0;
   font-weight:normal;
   font-size:1.5rem;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 600px) {
     font-size:3rem;
   }
 `;
@@ -37,7 +37,7 @@ const ColumnsWrapper = styled.div`
     margin-left: auto;
     margin-right: auto;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 600px) {
     grid-template-columns: 1.1fr 0.9fr;
     & > div:nth-child(1) {
       order: 0;
