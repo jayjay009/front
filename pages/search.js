@@ -28,6 +28,7 @@ const Bg = styled.div`
   color: #fff;
   height: 100%;
   padding-bottom: 100%;
+  padding: 50px 0;
 `;
 
 export default function SearchPage() {

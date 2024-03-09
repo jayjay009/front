@@ -16,19 +16,20 @@ import SingleOrder from "@/components/SingleOrder";
 const Bg = styled.div`
   background-color: #714423;
   color:#fff;
-  height: 100%;
+  min-height: 100vh;
   padding-bottom: 100%;
 
 `;
 const InsideBox = styled.div`
   background-color: #97704f;
   border-radius: 10px;
+  padding: 20px;  
 `;
 const ColsWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 40px;
-  margin: 40px 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
   p {
     margin: 5px;
   }
@@ -40,21 +41,19 @@ const CityHolder = styled.div`
 const WishedProductsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 20px;
   @media only screen and (max-width: 600px) {
-    grid-template-columns: 1fr;
-    gap: 20px; 
+    grid-template-columns: 1fr; 
   }
 `;
 const Box = styled.div`
   background-color: transparent;
   border-radius: 10px;
-  padding: 30px;
+  padding: 20px;
 
   @media only screen and (max-width: 600px) {
     padding: 15px;
   }
-  
 `;
 const ButColor = styled.div`
 background-color: #714423;
