@@ -15,7 +15,7 @@ const Bg = styled.div`
   background-color: #714423;
   color: #fff;
   height: 100vh;
-  top: 68px;
+  top: 0;
 `;
 
 const CategoryGrid = styled.div`
