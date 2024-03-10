@@ -136,10 +136,10 @@ export default function CategoryPage({
         </CategoryHeader>
         {loadingProducts && <Spinner fullWidth />}
         {!loadingProducts && (
-          <div>
+          <Bg>
             {products.length > 0 && <ProductsGrid products={products} />}
             {products.length === 0 && <div>Sorry, no products found</div>}
-          </div>
+          </Bg>
         )}
       </Center>
     </Bg>
