@@ -44,7 +44,7 @@ const Bg = styled.div`
   background-color: #714423;
   color: #fff;
   height: 100%;
-  padding-bottom: 30%;
+  padding-bottom: 100%;
 `;
 
 export default function CategoryPage({
