@@ -15,10 +15,9 @@ import SingleOrder from "@/components/SingleOrder";
 
 const Bg = styled.div`
   background-color: #714423;
-  color:#fff;
-  height: 100%;
-  padding-bottom: 100%;
-
+  color: #fff;
+  height: 100vh;
+  top: 68px;
 `;
 const InsideBox = styled.div`
   background-color: #97704f;

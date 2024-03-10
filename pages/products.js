@@ -12,9 +12,9 @@ import styled from "styled-components";
 
 const Bg = styled.div`
   background-color: #714423;
-  color:#fff;
-  height: 100%;
-  padding-bottom: 30%;
+  color: #fff;
+  height: 100vh;
+  top: 68px;
 `;
 
 export default function ProductPage({ products, wishedProducts }) {

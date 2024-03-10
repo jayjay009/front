@@ -13,10 +13,9 @@ import { mongooseConnect } from "@/lib/mongoose";
 
 const Bg = styled.div`
   background-color: #714423;
-  color:#fff;
-  height: 100%;
-  padding-bottom: 14%;
-
+  color: #fff;
+  height: 100vh;
+  top: 68px;
 `;
 
 const CategoryGrid = styled.div`
