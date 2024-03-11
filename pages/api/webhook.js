@@ -4,7 +4,7 @@ import { buffer } from "micro";
 import { Order } from "@/models/Order";
 
 const endpointSecret =
-  "whsec_3cd9144384f320cb06ba8732f5485406fe0525f9d9596fcc16f9d9e6724968f3";
+  "whsec_FKJz84lVFZ2upFBMxXwD6tXcqkrhdQMT";
 
 export default async function handler(req, res) {
   await mongooseConnect();
