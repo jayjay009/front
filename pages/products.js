@@ -15,7 +15,7 @@ const Bg = styled.div`
   color: #fff;
   height: 100vh;
   width: 100%;
-  padding-bottom: 3000vh;
+  padding-bottom: 300vh;
   bottom: 300vh;
 `;
 
