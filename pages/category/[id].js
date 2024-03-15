@@ -12,6 +12,7 @@ const CategoryHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 5px;
   h1 {
     font-size: 1.5em;
   }
@@ -29,21 +30,20 @@ const Filter = styled.div`
   border-radius: 5px;
   display: flex;
   gap: 5px;
-  color: #fff;
-  margin-bottom: 5px;
+  color:#fff;
   select {
     background-color: #714423;
     border: 0;
     font-size: inherit;
     color: #fff;
-    display: flex;
-    
+    gap: 5px;
   }
 `;
 const Bg = styled.div`
   background-color: #714423;
   color: #fff;
   height: 100%;
+  max-width: 100%;
   padding-bottom: 100%;
 `;
 

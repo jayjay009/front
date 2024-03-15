@@ -88,11 +88,11 @@ const CityHolder = styled.div`
 `;
 const Bg = styled.div`
   background-color: #714423;
-  color:#fff;
-  height: 100%;
-  padding-bottom: 26%;
-
+  color: #fff;
+  height: 100vh;
+  top: 68px; 
 `;
+
 const InsideBox = styled.div`
   background-color: #97704f;
   border-radius: 10px;
@@ -103,8 +103,7 @@ const WhiteTableCell = styled.td`
 `;
 
 export default function CartPage() {
-  const { cartProducts, addProduct, removeProduct, clearCart } =
-    useContext(CartContext);
+  const {cartProducts,addProduct,removeProduct,clearCart} = useContext(CartContext);
   const { data: session } = useSession();
   const [products, setProducts] = useState([]);
   const [name, setName] = useState("");
@@ -127,7 +126,7 @@ export default function CartPage() {
     if (typeof window === "undefined") {
       return;
     }
-    if (window.location.href.includes("success")) {
+    if (window?.location.href.includes("success")) {
       setIsSuccess(true);
       clearCart();
     }
@@ -197,7 +196,9 @@ export default function CartPage() {
             <InsideBox>
             <Box>
               <h2>Cart</h2>
-              {!cartProducts?.length && <div>Your cart is empty</div>}
+              {!cartProducts?.length &&(
+               <div>Your cart is empty</div>
+               )}
               {products?.length > 0 && (
                 <Table>
                   <thead>
@@ -247,7 +248,7 @@ export default function CartPage() {
                     </tr>
                     <tr className="subtotal total">
                       <td colSpan={2}>Total</td>
-                      <td>₱{productsTotal|| 0}</td>
+                      <td>₱{productsTotal || 0}</td>
                     </tr>
                   </tbody>
                 </Table>

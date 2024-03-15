@@ -17,6 +17,7 @@ const Bg = styled.div`
   background-color: #714423;
   color: #fff;
   height: 100vh;
+  width: 100vh;
   padding-bottom: 100vh;
 `;
 const InsideBox = styled.div`
