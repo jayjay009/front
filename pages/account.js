@@ -199,7 +199,7 @@ export default function AccountPage() {
                </InsideBox>
             </RevealWrapper>
           </div>
-          <Bg>
+          <div>
             <RevealWrapper delay={100}>
               <InsideBox>
               <Box>
@@ -271,7 +271,7 @@ export default function AccountPage() {
               </Box>
               </InsideBox>
             </RevealWrapper>
-          </Bg>
+          </div>
         </ColsWrapper>
       </Center>
     </Bg>
