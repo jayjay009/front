@@ -26,8 +26,8 @@ const InputWrapper = styled.div`
 const Bg = styled.div`
   background-color: #714423;
   color: #fff;
-  height: 100vh; /* Use 100vh for 100% viewport height */
-  top: 68px; /* Adjust top positioning as needed */
+  height: 100vh;
+  top: 68px;
 `;
 
 export default function SearchPage() {
