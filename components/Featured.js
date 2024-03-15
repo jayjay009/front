@@ -95,7 +95,7 @@ export default function Featured({product}) {
           <ImgColumn>
             <RevealWrapper delay={0}>
               <CenterImg>
-                <img className={'main'} src="https://mini-thesis-ecommerce.s3.amazonaws.com/1709108090528.png" alt=""/>
+                <img className={'main'} src="https://mini-thesis-ecommerce.s3.amazonaws.com/1710483512850.png" alt=""/>
               </CenterImg>
             </RevealWrapper>
           </ImgColumn>
