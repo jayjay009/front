@@ -19,6 +19,7 @@ const Bg = styled.div`
   height: 100vh;
   width: 100%;
   padding-bottom: 100vh;
+  bottom: 100vh;
 `;
 const InsideBox = styled.div`
   background-color: #97704f;
@@ -198,7 +199,7 @@ export default function AccountPage() {
                </InsideBox>
             </RevealWrapper>
           </div>
-          <div>
+          <Bg>
             <RevealWrapper delay={100}>
               <InsideBox>
               <Box>
@@ -270,7 +271,7 @@ export default function AccountPage() {
               </Box>
               </InsideBox>
             </RevealWrapper>
-          </div>
+          </Bg>
         </ColsWrapper>
       </Center>
     </Bg>
