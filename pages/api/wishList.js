@@ -1,7 +1,9 @@
 import {mongooseConnect} from "@/lib/mongoose";
 import {getServerSession} from "next-auth";
+
 import { WishedProduct } from "@/models/WishedProducts";
 import { authOption } from "./auth/[...nextauth]";
+
 
 export default async function handle(req, res) {
   await mongooseConnect();
