@@ -15,8 +15,8 @@ const Bg = styled.div`
   color: #fff;
   height: 100vh;
   width: 100%;
-  padding-bottom: 250vh;
-  bottom: 250vh;
+  padding-bottom: 3000vh;
+  bottom: 300vh;
 `;
 
 export default function ProductPage({ products, wishedProducts }) {
