@@ -13,10 +13,10 @@ export default async function handler(req, res) {
   const {
     name,
     email,
-    city,
-    postalCode,
-    streetAddress,
-    country,
+    course,
+    yearLevel,
+    room,
+    number,
     cartProducts,
   } = req.body;
   await mongooseConnect();
@@ -48,10 +48,10 @@ export default async function handler(req, res) {
     line_items,
     name,
     email,
-    city,
-    postalCode,
-    streetAddress,
-    country,
+    course,
+    yearLevel,
+    room,
+    number,
     paid: false,
     userEmail: session?.user?.email,
   });
