@@ -75,10 +75,10 @@ export default function AccountPage() {
   const { data: session } = useSession();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [city, setCity] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [streetAddress, setStreetAddress] = useState("");
-  const [country, setCountry] = useState("");
+  const [course, setCity] = useState("");
+  const [yearLevel, setPostalCode] = useState("");
+  const [room, setStreetAddress] = useState("");
+  const [number, setCountry] = useState("");
   const [adressloaded, setAddressLoaded] = useState(true);
   const [wishListLoaded, setWishListLoaded] = useState(true);
   const [orderLoaded, setOrderLoaded] = useState(true);
@@ -94,7 +94,7 @@ export default function AccountPage() {
     await signIn("google");
   }
   async function saveAddress() {
-    const data = { name, email, city, streetAddress, postalCode, country };
+    const data = { name, email, course, yearLevel, room, number };
     axios.put("/api/address", data);
   }
   useEffect(() => {
@@ -105,10 +105,10 @@ export default function AccountPage() {
       if(response.data) {
           setName(response.data.name || "");
       setEmail(response.data.email || "");
-      setCity(response.data.city || "");
-      setPostalCode(response.data.postalCode || "");
-      setStreetAddress(response.data.streetAddress || "");
-      setCountry(response.data.country || "");
+      setCity(response.data.course || "");
+      setPostalCode(response.data.yearLevel || "");
+      setStreetAddress(response.data.room || "");
+      setCountry(response.data.number || "");
       }
       else {
         // Handle the case where response.data is null or undefined
@@ -228,30 +228,30 @@ export default function AccountPage() {
                       <Input
                         type="text"
                         placeholder="Course"
-                        value={city}
-                        name="city"
+                        value={course}
+                        name="course"
                         onChange={(ev) => setCity(ev.target.value)}
                       />
                       <Input
                         type="text"
                         placeholder="YearLevel"
-                        value={postalCode}
-                        name="postalCode"
+                        value={yearLevel}
+                        name="yearlevel"
                         onChange={(ev) => setPostalCode(ev.target.value)}
                       />
                     </CityHolder>
                     <Input
                       type="text"
                       placeholder="Room"
-                      value={streetAddress}
-                      name="streetAddress"
+                      value={room}
+                      name="room"
                       onChange={(ev) => setStreetAddress(ev.target.value)}
                     />
                     <Input
                       type="text"
                       placeholder="Number"
-                      value={country}
-                      name="country"
+                      value={number}
+                      name="number"
                       onChange={(ev) => setCountry(ev.target.value)}
                     />
                     <Button black block onClick={saveAddress}>

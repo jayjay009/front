@@ -281,14 +281,14 @@ export default function CartPage() {
                     type="text"
                     placeholder="Course"
                     value={course}
-                    name="city"
+                    name="course"
                     onChange={(ev) => setCity(ev.target.value)}
                   />
                   <Input
                     type="text"
                     placeholder="YearLevel"
                     value={yearLevel}
-                    name="postalCode"
+                    name="yearLevel"
                     onChange={(ev) => setPostalCode(ev.target.value)}
                   />
                 </CityHolder>
@@ -297,14 +297,14 @@ export default function CartPage() {
                   type="text"
                   placeholder="Room"
                   value={room}
-                  name="streetAddress"
+                  name="room"
                   onChange={(ev) => setStreetAddress(ev.target.value)}
                 />
                 <Input
                   type="text"
                   placeholder="Number"
                   value={number}
-                  name="country"
+                  name="number"
                   onChange={(ev) => setCountry(ev.target.value)}
                 />
                 <Button black block onClick={goToPayment}>

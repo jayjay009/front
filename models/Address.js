@@ -4,10 +4,10 @@ const AddressSchema = new Schema({
   userEmail: {type:String, unique:true, required:true},
   name: String,
   email: String,
-  city: String,
-  postalCode: String,
-  streetAddress: String,
-  country: String,
+  course: String,
+  yearLevel: String,
+  room: String,
+  number: String,
 });
 
 export const Address = models?.Address || model('Address', AddressSchema);
