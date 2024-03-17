@@ -109,10 +109,10 @@ export default function CartPage() {
   const [products, setProducts] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [city, setCity] = useState("");
-  const [postalCode, setPostalCode] = useState("");
-  const [streetAddress, setStreetAddress] = useState("");
-  const [country, setCountry] = useState("");
+  const [course, setCity] = useState("");
+  const [yearLevel, setPostalCode] = useState("");
+  const [room, setStreetAddress] = useState("");
+  const [number, setCountry] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   useEffect(() => {
     if (cartProducts.length > 0) {
@@ -155,10 +155,10 @@ export default function CartPage() {
     const response = await axios.post("/api/checkout", {
       name,
       email,
-      city,
-      postalCode,
-      streetAddress,
-      country,
+      course,
+      yearLevel,
+      room,
+      number,
       cartProducts,
     });
     if (response.data.url) {
