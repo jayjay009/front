@@ -280,14 +280,14 @@ export default function CartPage() {
                   <Input
                     type="text"
                     placeholder="Course"
-                    value={city}
+                    value={course}
                     name="city"
                     onChange={(ev) => setCity(ev.target.value)}
                   />
                   <Input
                     type="text"
                     placeholder="YearLevel"
-                    value={postalCode}
+                    value={yearLevel}
                     name="postalCode"
                     onChange={(ev) => setPostalCode(ev.target.value)}
                   />
@@ -296,14 +296,14 @@ export default function CartPage() {
                   fill="white"
                   type="text"
                   placeholder="Room"
-                  value={streetAddress}
+                  value={room}
                   name="streetAddress"
                   onChange={(ev) => setStreetAddress(ev.target.value)}
                 />
                 <Input
                   type="text"
                   placeholder="Number"
-                  value={country}
+                  value={number}
                   name="country"
                   onChange={(ev) => setCountry(ev.target.value)}
                 />
