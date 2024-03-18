@@ -36,8 +36,8 @@ export default function SingleOrder({ line_items, createdAt,...rest }) {
         <Address>
           {rest.name}<br />
           {rest.email}<br />
-          {rest.streetAddress}<br />
-          {rest.postalCode} {rest.city}, {rest.country}
+          {rest.course}<br />
+          {rest.yearLevel} {rest.room}, {rest.number}
         </Address>
       </div>
       <div>
