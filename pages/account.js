@@ -184,15 +184,16 @@ export default function AccountPage() {
                                   )
                               )}
                           </WishedProductsGrid>
-
                           {wishedProducts.length === 0 && (
-                            <>
-                              {session && <p>Your wishlist is empty</p>}
-                              {!session && (
-                                <p>Login to add products to your wishlist</p>
-                              )}
-                            </>
-                          )}
+                          <>
+                            {session && (
+                              <p>Your wishlist is empty</p>
+                            )}
+                            {!session && (
+                              <p>Login to add products to your wishlist</p>
+                            )}
+                          </>
+                        )}
                         </>
                       )}
                     </>
