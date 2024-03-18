@@ -27,7 +27,8 @@ const Bg = styled.div`
   background-color: #714423;
   color: #fff;
   height: 100vh;
-  top: 68px;
+  width: 100%;
+  padding-bottom: 130vh;
 `;
 
 export default function SearchPage() {

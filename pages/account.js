@@ -23,7 +23,7 @@ const Bg = styled.div`
 `;
 const InsideBox = styled.div`
   background-color: #97704f;
-  border-radius: 10px;  
+  border-radius: 10px;
 `;
 const ColsWrapper = styled.div`
   display: grid;
@@ -55,11 +55,10 @@ const Box = styled.div`
     padding: 15px;
     max-width: 100%;
   }
-  
 `;
 const ButColor = styled.div`
-background-color: #714423;
-border: 0;
+  background-color: #714423;
+  border: 0;
   padding: 5px 15px;
   border-radius: 5px;
   cursor: pointer;
@@ -84,7 +83,7 @@ export default function AccountPage() {
   const [orderLoaded, setOrderLoaded] = useState(true);
   const [wishedProducts, setWishedProducts] = useState([]);
   const [activeTab, setActiveTab] = useState("Orders");
-  const[orders, SetOrders] = useState([]);
+  const [orders, SetOrders] = useState([]);
   async function logout() {
     await signOut({
       callbackUrl: process.env.NEXT_PUBLIC_URL,
@@ -101,35 +100,37 @@ export default function AccountPage() {
     if (!session) {
       return;
     }
-    axios.get("/api/address").then((response) => {
-      if(response.data) {
+    axios
+      .get("/api/address")
+      .then((response) => {
+        if (response.data) {
           setName(response.data.name || "");
-      setEmail(response.data.email || "");
-      setCity(response.data.course || "");
-      setPostalCode(response.data.yearLevel || "");
-      setStreetAddress(response.data.room || "");
-      setCountry(response.data.number || "");
-      }
-      else {
-        // Handle the case where response.data is null or undefined
-        console.error("Error: response.data is null or undefined");
-      }
-    }).catch((error) => {
-      // Handle the error from the API request
-      console.error("Error fetching data from /api/address:", error);
-    });
+          setEmail(response.data.email || "");
+          setCity(response.data.course || "");
+          setPostalCode(response.data.yearLevel || "");
+          setStreetAddress(response.data.room || "");
+          setCountry(response.data.number || "");
+        } else {
+          // Handle the case where response.data is null or undefined
+          console.error("Error: response.data is null or undefined");
+        }
+      })
+      .catch((error) => {
+        // Handle the error from the API request
+        console.error("Error fetching data from /api/address:", error);
+      });
     axios.get("/api/wishList").then((response) => {
       setWishedProducts(response.data.map((wp) => wp.product));
       setWishListLoaded(true);
     });
-    axios.get('/api/orders').then(response =>{
+    axios.get("/api/orders").then((response) => {
       SetOrders(response.data);
       setOrderLoaded(true);
     });
   }, [session]);
   function productRemovedFromWishlist(idToRemove) {
     setWishedProducts((products) => {
-      return [...products.filter((p) => p._id.toString() !== idToRemove)];
+      return [...products.filter((p) => p && p._id && p._id.toString() !== idToRemove)];
     });
   }
   return (
@@ -140,137 +141,136 @@ export default function AccountPage() {
           <div>
             <RevealWrapper delay={0}>
               <InsideBox>
-              <Box>
-                <Tabs
-                  tabs={["Orders", "Wishlist"]}
-                  active={activeTab}
-                  onChange={setActiveTab}
-                />
-                {activeTab === 'Orders' && (
-                  <>
-                  {!orderLoaded &&(
-                    <Spinner fullWidth={true}/>
-                  )}
-                  {orderLoaded && (
-                    <div>
-                      {orders.length === 0 && (
-                        <p>Login to see your orders</p>
+                <Box>
+                  <Tabs
+                    tabs={["Orders", "Wishlist"]}
+                    active={activeTab}
+                    onChange={setActiveTab}
+                  />
+                  {activeTab === "Orders" && (
+                    <>
+                      {!orderLoaded && <Spinner fullWidth={true} />}
+                      {orderLoaded && (
+                        <div>
+                          {orders.length === 0 && (
+                            <p>Login to see your orders</p>
+                          )}
+                          {orders.length > 0 &&
+                            orders.map((o) => <SingleOrder {...o} />)}
+                        </div>
                       )}
-                      {orders.length > 0 && orders.map(o => (
-                        <SingleOrder {...o}/>
-                      ))}
-                    </div>
-                  
+                    </>
                   )}
-                  
-                  </>
-                )}
-                {activeTab === "Wishlist" && (
-                  <>
-                    {!wishListLoaded && <Spinner fullWidth={true} />}
-                    {wishListLoaded && (
-                      <>
-                        <WishedProductsGrid>
-                          {wishedProducts.length > 0 &&
-                            wishedProducts.map((wp) => (
-                              typeof wp === 'object' && wp !== null && '_id' in wp ? (
-                              <ProductBox
-                                key={wp._id}
-                                {...wp}
-                                wished={true}
-                                onRemoveFromWishlist={
-                                  productRemovedFromWishlist
-                                }
-                              />
-                              ) : null
-                            ))}
-                        </WishedProductsGrid>
-                        {wishedProducts.length === 0 && (
-                          <>
-                            {session && <p>Your wishlist is empty</p>}
-                            {!session && (
-                              <p>Login to add products to your wishlist</p>
-                            )}
-                          </>
-                        )}
-                      </>
-                    )}
-                  </>
-                )}
-              </Box> 
-               </InsideBox>
+                  {activeTab === "Wishlist" && (
+                    <>
+                      {!wishListLoaded && <Spinner fullWidth={true} />}
+                      {wishListLoaded && (
+                        <>
+                          <WishedProductsGrid>
+                            {wishedProducts.length > 0 &&
+                              wishedProducts.map(
+                                (wp) =>
+                                  // Add a conditional check to ensure wp is not null or undefined
+                                  wp &&
+                                  wp._id && (
+                                    <ProductBox
+                                      key={wp._id}
+                                      {...wp}
+                                      wished={true}
+                                      onRemoveFromWishlist={
+                                        productRemovedFromWishlist
+                                      }
+                                    />
+                                  )
+                              )}
+                          </WishedProductsGrid>
+
+                          {wishedProducts.length === 0 && (
+                            <>
+                              {session && <p>Your wishlist is empty</p>}
+                              {!session && (
+                                <p>Login to add products to your wishlist</p>
+                              )}
+                            </>
+                          )}
+                        </>
+                      )}
+                    </>
+                  )}
+                </Box>
+              </InsideBox>
             </RevealWrapper>
           </div>
           <Bg>
             <RevealWrapper delay={100}>
               <InsideBox>
-              <Box>
-                <h2>{session ? "Account Details" : "LogIn"}</h2>
-                {!adressloaded && <Spinner fullWidth={true} />}
-                {adressloaded && session && (
-                  <>
-                    <Input
-                      type="text"
-                      placeholder="Name"
-                      s
-                      value={name}
-                      name="name"
-                      onChange={(ev) => setName(ev.target.value)}
-                    />
-                    <Input
-                      type="text"
-                      placeholder="Email"
-                      value={email}
-                      name="email"
-                      onChange={(ev) => setEmail(ev.target.value)}
-                    />
-                    <CityHolder>
+                <Box>
+                  <h2>{session ? "Account Details" : "LogIn"}</h2>
+                  {!adressloaded && <Spinner fullWidth={true} />}
+                  {adressloaded && session && (
+                    <>
                       <Input
                         type="text"
-                        placeholder="Course"
-                        value={course}
-                        name="course"
-                        onChange={(ev) => setCity(ev.target.value)}
+                        placeholder="Name"
+                        s
+                        value={name}
+                        name="name"
+                        onChange={(ev) => setName(ev.target.value)}
                       />
                       <Input
                         type="text"
-                        placeholder="YearLevel"
-                        value={yearLevel}
-                        name="yearlevel"
-                        onChange={(ev) => setPostalCode(ev.target.value)}
+                        placeholder="Email"
+                        value={email}
+                        name="email"
+                        onChange={(ev) => setEmail(ev.target.value)}
                       />
-                    </CityHolder>
-                    <Input
-                      type="text"
-                      placeholder="Room"
-                      value={room}
-                      name="room"
-                      onChange={(ev) => setStreetAddress(ev.target.value)}
-                    />
-                    <Input
-                      type="text"
-                      placeholder="Number"
-                      value={number}
-                      name="number"
-                      onChange={(ev) => setCountry(ev.target.value)}
-                    />
-                    <Button black block onClick={saveAddress}>
-                      Save
-                    </Button>
-                    <hr />
-                  </>
-                )}
-                {session && (
-                  <ButColor primary onClick={logout}>
-                    Logout
-                  </ButColor>
-                )}
-                {!session && (
-                  <ButColor primary onClick={login}>
-                    Login with Google
-                  </ButColor>
-                )}
-              </Box>
+                      <CityHolder>
+                        <Input
+                          type="text"
+                          placeholder="Course"
+                          value={course}
+                          name="course"
+                          onChange={(ev) => setCity(ev.target.value)}
+                        />
+                        <Input
+                          type="text"
+                          placeholder="YearLevel"
+                          value={yearLevel}
+                          name="yearlevel"
+                          onChange={(ev) => setPostalCode(ev.target.value)}
+                        />
+                      </CityHolder>
+                      <Input
+                        type="text"
+                        placeholder="Room"
+                        value={room}
+                        name="room"
+                        onChange={(ev) => setStreetAddress(ev.target.value)}
+                      />
+                      <Input
+                        type="text"
+                        placeholder="Number"
+                        value={number}
+                        name="number"
+                        onChange={(ev) => setCountry(ev.target.value)}
+                      />
+                      <Button black block onClick={saveAddress}>
+                        Save
+                      </Button>
+                      <hr />
+                    </>
+                  )}
+                  {session && (
+                    <ButColor primary onClick={logout}>
+                      Logout
+                    </ButColor>
+                  )}
+                  {!session && (
+                    <ButColor primary onClick={login}>
+                      Login with Google
+                    </ButColor>
+                  )}
+                </Box>
               </InsideBox>
             </RevealWrapper>
           </Bg>
