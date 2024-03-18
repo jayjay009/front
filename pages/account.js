@@ -84,6 +84,7 @@ export default function AccountPage() {
   const [wishedProducts, setWishedProducts] = useState([]);
   const [activeTab, setActiveTab] = useState("Orders");
   const [orders, SetOrders] = useState([]);
+
   async function logout() {
     await signOut({
       callbackUrl: process.env.NEXT_PUBLIC_URL,
@@ -130,7 +131,11 @@ export default function AccountPage() {
   }, [session]);
   function productRemovedFromWishlist(idToRemove) {
     setWishedProducts((products) => {
-      return [...products.filter((p) => p && p._id && p._id.toString() !== idToRemove)];
+      return [
+        ...products.filter(
+          (p) => p && p._id && p._id.toString() !== idToRemove
+        ),
+      ];
     });
   }
   return (
@@ -185,15 +190,14 @@ export default function AccountPage() {
                               )}
                           </WishedProductsGrid>
                           {wishedProducts.length === 0 && (
-                          <>
-                            {session && (
-                              <p>Your wishlist is empty</p>
-                            )}
-                            {!session && (
-                              <p>Login to add products to your wishlist</p>
-                            )}
-                          </>
-                        )}
+                            <>
+                              {session ? (
+                                <p>Your wishlist is empty</p>
+                              ) : (
+                                <p>Login to add products to your wishlist</p>
+                              )}
+                            </>
+                          )}
                         </>
                       )}
                     </>
