@@ -10,4 +10,4 @@ const AddressSchema = new Schema({
   number: String,
 });
 
-export const Address = models?.Address || model('Address', AddressSchema);
+export const Address = models?.Address || model('Address', AddressSchema)
