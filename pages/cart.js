@@ -142,7 +142,7 @@ export default function CartPage() {
       setCity(response.data.course);
       setPostalCode(response.data.yearLevel);
       setStreetAddress(response.data.room);
-      setCountry(response.data.data);
+      setCountry(response.data.number);
     });
   }, [session]);
   function moreOfThisProduct(id) {

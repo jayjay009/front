@@ -94,7 +94,7 @@ export default function AccountPage() {
     await signIn("google");
   }
   async function saveAddress() {
-    const data = { name,email,course,yearLevel,room,number };
+    const data = {name,email,course,yearLevel,room,number};
     axios.put("/api/address", data);
   }
   useEffect(() => {
