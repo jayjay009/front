@@ -157,13 +157,11 @@ export default function AccountPage() {
                       {!orderLoaded && <Spinner fullWidth={true} />}
                       {orderLoaded && (
                         <div>
-                          {session ? (
-                            <p>Your orders is empty</p>
-                          ) : (
-                            <p>Login to see your orders</p>
-                          )}
+                           {orders.length === 0 && (
+                          <p>Order Empty</p>
+                        )}
                           {orders.length > 0 &&
-                            orders.map((o) => <SingleOrder {...o} />)}
+                            orders.map((o => <SingleOrder {...o} />))}
                         </div>
                       )}
                     </>
