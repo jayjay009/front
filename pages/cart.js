@@ -197,7 +197,7 @@ export default function CartPage() {
             <InsideBox>
             <Box>
               <h2>Cart</h2>
-              {!cartProducts?.length &&(
+              {!!!cartProducts?.length &&(
                <div>Your cart is empty</div>
                )}
               {products?.length > 0 && (

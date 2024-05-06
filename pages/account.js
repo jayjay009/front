@@ -157,7 +157,10 @@ export default function AccountPage() {
                       {!orderLoaded && <Spinner fullWidth={true} />}
                       {orderLoaded && (
                         <div>
-                          {orders.length === 0 && (
+                          {session && (
+                            <p>Your orders is empty</p>
+                          )}
+                          {!session && (
                             <p>Login to see your orders</p>
                           )}
                           {orders.length > 0 &&
